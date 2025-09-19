@@ -43,14 +43,14 @@ jobs:
             git reset --hard origin/main
             corepack enable || true
             if [ -f pnpm-lock.yaml ]; then PKG=pnpm; elif [ -f yarn.lock ]; then PKG=yarn; else PKG=npm; fi
-            $PKG install --frozen-lockfile || $PKG ci || $PKG install
-            $PKG run build
+            \$PKG install --frozen-lockfile || \$PKG ci || \$PKG install
+            \$PKG run build
             if command -v pm2 >/dev/null 2>&1; then
               if [ -f ecosystem.config.js ]; then
                 pm2 startOrReload ecosystem.config.js || pm2 restart all || true
               else
-                APP_NAME=$(basename \"$APP_DIR\")
-                pm2 start npm --name \"$APP_NAME\" -- run start || pm2 restart \"$APP_NAME\" || true
+                APP_NAME=\$(basename \"$APP_DIR\")
+                pm2 start npm --name \"\$APP_NAME\" -- run start || pm2 restart \"\$APP_NAME\" || true
               fi
               pm2 save || true
             else
