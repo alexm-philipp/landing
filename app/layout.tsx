@@ -25,11 +25,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preconnect to Google Tag Manager for faster loading */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
