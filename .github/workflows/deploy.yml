@@ -1,0 +1,61 @@
+name: Deploy to VPS (SSH)
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add VPS host key to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "${{ secrets.VPS_SSH_PORT }}" "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy via SSH
+        env:
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT }}
+          APP_DIR: ${{ secrets.VPS_APP_DIR }}
+        run: |
+          ssh -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" bash -lc "
+            set -e
+            if [ ! -d \"$APP_DIR\" ]; then
+              echo 'ERROR: APP_DIR does not exist on the server: ' \"$APP_DIR\"
+              exit 1
+            fi
+            cd \"$APP_DIR\"
+            if [ ! -d .git ]; then
+              echo 'ERROR: APP_DIR is not a git repo. Please git clone the repo to APP_DIR first.'
+              exit 1
+            fi
+            git fetch --all
+            git reset --hard origin/main
+            corepack enable || true
+            if [ -f pnpm-lock.yaml ]; then PKG=pnpm; elif [ -f yarn.lock ]; then PKG=yarn; else PKG=npm; fi
+            $PKG install --frozen-lockfile || $PKG ci || $PKG install
+            $PKG run build
+            if command -v pm2 >/dev/null 2>&1; then
+              if [ -f ecosystem.config.js ]; then
+                pm2 startOrReload ecosystem.config.js || pm2 restart all || true
+              else
+                APP_NAME=$(basename \"$APP_DIR\")
+                pm2 start npm --name \"$APP_NAME\" -- run start || pm2 restart \"$APP_NAME\" || true
+              fi
+              pm2 save || true
+            else
+              sudo systemctl restart landing || true
+            fi
+          "
+
+
