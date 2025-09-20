@@ -4,14 +4,16 @@ export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
+        <img
           className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
           width={180}
           height={38}
-          priority
+          loading="eager"
           fetchPriority="high"
+          decoding="async"
+          style={{ color: "transparent" }}
         />
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
@@ -39,6 +41,7 @@ export default function Home() {
               alt="Vercel logomark"
               width={20}
               height={20}
+              loading="lazy"
             />
             Deploy now
           </a>
@@ -65,6 +68,7 @@ export default function Home() {
             alt="File icon"
             width={16}
             height={16}
+            loading="lazy"
           />
           Learn
         </a>
@@ -80,6 +84,7 @@ export default function Home() {
             alt="Window icon"
             width={16}
             height={16}
+            loading="lazy"
           />
           Examples
         </a>
@@ -95,6 +100,7 @@ export default function Home() {
             alt="Globe icon"
             width={16}
             height={16}
+            loading="lazy"
           />
           Go to nextjs.org →
         </a>

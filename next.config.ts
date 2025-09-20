@@ -4,12 +4,7 @@ const nextConfig: NextConfig = {
   // Optimize JS/CSS
   swcMinify: true,
 
-  // Only target modern browsers (drop legacy polyfills)
-  browserslist: [
-    "last 2 versions",
-    "not dead",
-    "not ie <= 11",
-  ],
+  // Note: browserslist should live in package.json for build tools
 
   async headers() {
     return [
