@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
               img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com;
               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
               font-src 'self' https://fonts.gstatic.com;
+              frame-src https://www.googletagmanager.com;
             `.replace(/\s{2,}/g, " ").trim(),
           },
         ],
@@ -24,4 +25,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
