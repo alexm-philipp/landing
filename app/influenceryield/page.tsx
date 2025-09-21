@@ -222,7 +222,7 @@ export default function InfluenceYield() {
         {/* Features Section */}
         <div className="mb-12">
           <h3 className="text-4xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-            What's Inside Every Email
+            What&apos;s Inside Every Email
           </h3>
           
           <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -260,7 +260,7 @@ export default function InfluenceYield() {
           </div>
           
           <p className="text-gray-700 font-medium mt-8 max-w-2xl mx-auto text-center">
-            Lock in tomorrow's stars while they're hungry—and ride the wave when they explode.
+            Lock in tomorrow&apos;s stars while they&apos;re hungry—and ride the wave when they explode.
           </p>
         </div>
         <div className="bg-white rounded-lg border border-gray-200 p-8 shadow-lg mb-12">
