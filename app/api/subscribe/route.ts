@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     
     // Log more details about the error
     if (error && typeof error === 'object' && 'response' in error) {
-      const mailchimpError = error as { response?: { body?: any } };
+      const mailchimpError = error as { response?: { body?: unknown } };
       console.error('Mailchimp error details:', mailchimpError.response?.body);
     }
     
