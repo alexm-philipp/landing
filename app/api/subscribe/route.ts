@@ -61,15 +61,36 @@ export async function POST(request: NextRequest) {
   } catch (error: unknown) {
     console.error('Mailchimp subscription error:', error);
     
+    // Log more details about the error
+    if (error && typeof error === 'object' && 'response' in error) {
+      const mailchimpError = error as { response?: { body?: any } };
+      console.error('Mailchimp error details:', mailchimpError.response?.body);
+    }
+    
     // Handle specific Mailchimp errors
     if (error && typeof error === 'object' && 'status' in error && error.status === 400) {
-      const mailchimpError = error as { response?: { body?: { title?: string } } };
+      const mailchimpError = error as { response?: { body?: { title?: string, detail?: string } } };
+      
       if (mailchimpError.response?.body?.title === 'Member Exists') {
         return NextResponse.json(
           { error: 'This email is already subscribed' },
           { status: 400 }
         );
       }
+      
+      // Handle permanently deleted emails
+      if (mailchimpError.response?.body?.detail?.includes('permanently deleted')) {
+        return NextResponse.json(
+          { error: 'This email was previously unsubscribed and cannot be re-added. Please use a different email address.' },
+          { status: 400 }
+        );
+      }
+      
+      // Return the actual error message from Mailchimp
+      return NextResponse.json(
+        { error: mailchimpError.response?.body?.detail || 'Invalid request to Mailchimp' },
+        { status: 400 }
+      );
     }
 
     return NextResponse.json(
