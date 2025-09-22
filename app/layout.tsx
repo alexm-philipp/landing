@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GhostLab",
-  description: "Next.js + GTM + GA4 setup",
+  title: "Fashion Influencer Growth",
+  description: "10x ROI on fashion influencer marketing.",
 };
 
 export default function RootLayout({
