@@ -12,11 +12,33 @@ export default function InfluenceYield() {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call - replace with your actual email capture logic
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitted(true);
-    setIsLoading(false);
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          name,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        // Handle error - you might want to show an error message to the user
+        console.error('Subscription failed:', data.error);
+        alert(data.error || 'Failed to subscribe. Please try again.');
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+      alert('Network error. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
