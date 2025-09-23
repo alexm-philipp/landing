@@ -5,7 +5,7 @@ import { useState } from 'react';
 // Declare dataLayer for TypeScript
 declare global {
   interface Window {
-    dataLayer: any[];
+    dataLayer: Record<string, unknown>[];
   }
 }
 
