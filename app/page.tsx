@@ -36,13 +36,10 @@ export default function InfluenceYield() {
       if (response.ok) {
         setIsSubmitted(true);
         
-        // Push email_capture event to dataLayer for GTM
+        // Push email_submit event to dataLayer for GTM
         if (typeof window !== 'undefined' && window.dataLayer) {
           window.dataLayer.push({
-            event: 'email_capture',
-            event_category: 'engagement',
-            event_label: 'newsletter_signup',
-            value: 1
+            event: 'email_submit'
           });
         }
       } else {
