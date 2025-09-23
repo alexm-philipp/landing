@@ -2,15 +2,21 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import Head from "./head";
+import PerformanceMonitor from "./components/PerformanceMonitor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -25,9 +31,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Load GTM after window load to avoid blocking LCP */}
-        <Script id="gtm" strategy="afterInteractive">
+        {/* Load GTM with lazy strategy to avoid blocking LCP */}
+        <Script id="gtm" strategy="lazyOnload">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -46,6 +53,7 @@ export default function RootLayout({
         </noscript>
 
         {children}
+        <PerformanceMonitor />
       </body>
     </html>
   );

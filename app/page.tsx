@@ -59,7 +59,7 @@ export default function InfluenceYield() {
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-6 py-12 max-w-4xl">
         
-        {/* Hero Section */}
+        {/* Hero Section - Optimized for LCP */}
         <div className="text-center mb-8 max-w-6xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
             The <span className="bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent underline decoration-orange-500">Next Big</span> Fashion Influencers Are <span className="bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent underline decoration-orange-500">Still Small</span>
@@ -197,62 +197,6 @@ export default function InfluenceYield() {
               Two emails a week of breakout creators with devoted audiences—contacts included.
             </p>
             
-            {/* Mobile-only second CTA */}
-            <div className="md:hidden bg-white rounded-lg border border-gray-200 p-6 shadow-lg mb-8">
-              {!isSubmitted ? (
-                <>
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 underline">
-                      Access Our Hidden Creator Pipeline
-                    </h3>
-                    <p className="text-gray-900 font-bold">
-                      Turn Micro Budgets Into Mega Results
-                    </p>
-                  </div>
-                  
-                  <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
-                    <div className="space-y-4">
-                      <div className="flex flex-col gap-4">
-                        <input
-                          type="text"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          placeholder="Your name"
-                          required
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                        <input
-                          type="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="Your email"
-                          required
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                      </div>
-                      <button
-                        type="submit"
-                        disabled={isLoading}
-                        className="w-full px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold rounded-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-200 disabled:opacity-50 cursor-pointer"
-                      >
-                        {isLoading ? 'Unlocking ROI...' : 'Get Access Now'}
-                      </button>
-                    </div>
-                    <p className="text-sm text-gray-500 mt-4 text-center">
-                      No spam. Unsubscribe anytime.
-                    </p>
-                  </form>
-                </>
-              ) : (
-                <div className="text-center">
-                  <div className="text-4xl mb-4">🔓</div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">You are in. (Check your spam folder). Now unlock your ROI!</h2>
-                  <p className="text-gray-600">
-                    Check your email for confirmation. Your first list arrives shortly.
-                  </p>
-                </div>
-              )}
-            </div>
           </div>
 
         {/* Features Section */}
@@ -298,61 +242,6 @@ export default function InfluenceYield() {
           <p className="text-gray-700 font-medium mt-8 max-w-2xl mx-auto text-center">
             Lock in tomorrow&apos;s stars while they&apos;re hungry—and ride the wave when they explode.
           </p>
-        </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-8 shadow-lg mb-12">
-          {!isSubmitted ? (
-            <>
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 underline">
-                  Access Our Hidden Creator Pipeline
-                </h3>
-                <p className="text-gray-900 font-bold">
-                  Turn Micro Budgets Into Mega Results
-                </p>
-              </div>
-              
-              <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
-                <div className="space-y-4">
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Your name"
-                      required
-                      className="flex-1 px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Your email"
-                      required
-                      className="flex-1 px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold rounded-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? 'Joining...' : 'Get Access Now'}
-                  </button>
-                </div>
-                <p className="text-sm text-gray-500 mt-4 text-center">
-                  No spam. Unsubscribe anytime.
-                </p>
-              </form>
-            </>
-          ) : (
-            <div className="text-center">
-              <div className="text-4xl mb-4">🔓</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">You are in. (Check your spam folder). Now unlock your ROI!</h2>
-              <p className="text-gray-600">
-                Check your email for confirmation. Your first list arrives shortly.
-              </p>
-            </div>
-          )}
         </div>
 
       </div>

@@ -3,6 +3,23 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Optimize JS/CSS
   swcMinify: true,
+  
+  // Modern browser targets to avoid legacy polyfills
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  
+  // Optimize CSS loading
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['@next/third-parties'],
+    webVitalsAttribution: ['CLS', 'LCP'],
+  },
+  
+  // Optimize images and static assets
+  images: {
+    formats: ['image/webp', 'image/avif'],
+  },
 
   
   async headers() {
