@@ -118,7 +118,7 @@ export default function InfluenceYield() {
           ) : (
             <div className="text-center">
               <div className="text-4xl mb-4">🔓</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">You are in. Now unlock your ROI!</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">You are in. (Check your spam folder). Now unlock your ROI!</h2>
               <p className="text-gray-600">
                 Check your email for confirmation. Your first list arrives shortly.
               </p>
@@ -246,7 +246,7 @@ export default function InfluenceYield() {
               ) : (
                 <div className="text-center">
                   <div className="text-4xl mb-4">🔓</div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">You are in. Now unlock your ROI!</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">You are in. (Check your spam folder). Now unlock your ROI!</h2>
                   <p className="text-gray-600">
                     Check your email for confirmation. Your first list arrives shortly.
                   </p>
@@ -347,7 +347,7 @@ export default function InfluenceYield() {
           ) : (
             <div className="text-center">
               <div className="text-4xl mb-4">🔓</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">You are in. Now unlock your ROI!</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">You are in. (Check your spam folder). Now unlock your ROI!</h2>
               <p className="text-gray-600">
                 Check your email for confirmation. Your first list arrives shortly.
               </p>
