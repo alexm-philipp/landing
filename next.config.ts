@@ -4,8 +4,7 @@ const nextConfig: NextConfig = {
   // Optimize JS/CSS
   swcMinify: true,
 
-  // Note: browserslist should live in package.json for build tools
-
+  
   async headers() {
     return [
       {
