@@ -2,6 +2,13 @@
 
 import { useState } from 'react';
 
+// Declare dataLayer for TypeScript
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
+
 export default function InfluenceYield() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -28,6 +35,16 @@ export default function InfluenceYield() {
 
       if (response.ok) {
         setIsSubmitted(true);
+        
+        // Push email_capture event to dataLayer for GTM
+        if (typeof window !== 'undefined' && window.dataLayer) {
+          window.dataLayer.push({
+            event: 'email_capture',
+            event_category: 'engagement',
+            event_label: 'newsletter_signup',
+            value: 1
+          });
+        }
       } else {
         // Handle error - you might want to show an error message to the user
         console.error('Subscription failed:', data.error);
