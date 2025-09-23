@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Optimize JS/CSS
-  swcMinify: true,
+  // Optimize JS/CSS (swcMinify is default in Next.js 15+)
   
   // Modern browser targets to avoid legacy polyfills
   compiler: {
@@ -11,7 +10,6 @@ const nextConfig: NextConfig = {
   
   // Optimize CSS loading
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['@next/third-parties'],
     webVitalsAttribution: ['CLS', 'LCP'],
   },
