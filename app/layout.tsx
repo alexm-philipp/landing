@@ -35,7 +35,6 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-W5HD5CJR');`}
         </Script>
 
-
         {/* ✅ Fallback noscript iframe for when JS is disabled */}
         <noscript>
           <iframe
