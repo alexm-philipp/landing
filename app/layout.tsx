@@ -35,10 +35,6 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-W5HD5CJR');`}
         </Script>
 
-        {/* Mailchimp tracking script */}
-        <Script id="mailchimp" strategy="lazyOnload">
-          {`!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5ba13dcd3a99780713608f203/cc98f42c4d5c83d9082fff3e0.js");`}
-        </Script>
 
         {/* ✅ Fallback noscript iframe for when JS is disabled */}
         <noscript>
